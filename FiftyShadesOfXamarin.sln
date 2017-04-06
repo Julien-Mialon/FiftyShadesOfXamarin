@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiftyShadesOfXamarin", "src\FiftyShadesOfXamarin\FiftyShadesOfXamarin.csproj", "{AA3D085F-3112-407D-80B4-2C381842E344}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiftyShadesOfXamarin.Sample", "src\FiftyShadesOfXamarin.Sample\FiftyShadesOfXamarin.Sample.csproj", "{55A5CD75-3112-459B-A8EE-D4A413A236C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA3D085F-3112-407D-80B4-2C381842E344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3D085F-3112-407D-80B4-2C381842E344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3D085F-3112-407D-80B4-2C381842E344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3D085F-3112-407D-80B4-2C381842E344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A5CD75-3112-459B-A8EE-D4A413A236C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A5CD75-3112-459B-A8EE-D4A413A236C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A5CD75-3112-459B-A8EE-D4A413A236C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A5CD75-3112-459B-A8EE-D4A413A236C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
