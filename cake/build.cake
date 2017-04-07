@@ -6,10 +6,10 @@ const string ROOT_PATH = "../src/";
 const string SOLUTION_PATH = "../FiftyShadesOfXamarin.sln";
 const string ARTIFACTS_DIRECTORY = "../artifacts";
 const string DEPLOYMENT_DIRECTORY = "../build";
-const string DEPLOYMENT_LIB_DIRECTORY = DEPLOYMENT_DIRECTORY + "/lib/monoandroid";
+const string DEPLOYMENT_LIB_DIRECTORY = DEPLOYMENT_DIRECTORY + "/lib/";
 
 const string NUGET_NAME = "Florent37.FiftyShadesOfXamarin";
-const string NUGET_VERSION = "1.0.0";
+const string NUGET_VERSION = "1.0.1";
 const string NUGET_AUTHOR = "Julien Mialon";
 
 /* constants for target names */
@@ -24,6 +24,7 @@ const string DEFAULT_TARGET = BUILD;
 string[] LibProjects = new []
 {
 	"FiftyShadesOfXamarin",
+	"FiftyShadesOf.iOS"
 };
 
 var target = Argument("target", DEFAULT_TARGET);
@@ -53,12 +54,14 @@ Task(RELEASE)
 	.Does(() => {
 		CreateDirectory(DEPLOYMENT_DIRECTORY);
 		CreateDirectory(DEPLOYMENT_LIB_DIRECTORY);
+		CreateDirectory(DEPLOYMENT_LIB_DIRECTORY + "monoandroid");
+		CreateDirectory(DEPLOYMENT_LIB_DIRECTORY + "monotouch");
+		CreateDirectory(DEPLOYMENT_LIB_DIRECTORY + "xamarinios");
 		CreateDirectory(ARTIFACTS_DIRECTORY);
 
-		foreach(string libproject in LibProjects)
-		{
-			CopyFileToDirectory(ROOT_PATH + libproject + "/bin/Release/" + libproject + ".dll", DEPLOYMENT_LIB_DIRECTORY);
-		}
+		CopyFileToDirectory(ROOT_PATH + "FiftyShadesOfXamarin" + "/bin/Release/" + "FiftyShadesOfXamarin" + ".dll", DEPLOYMENT_LIB_DIRECTORY + "monoandroid");
+		CopyFileToDirectory(ROOT_PATH + "FiftyShadesOf.iOS" + "/bin/Release/" + "FiftyShadesOf.iOS" + ".dll", DEPLOYMENT_LIB_DIRECTORY + "monotouch");
+		CopyFileToDirectory(ROOT_PATH + "FiftyShadesOf.iOS" + "/bin/Release/" + "FiftyShadesOf.iOS" + ".dll", DEPLOYMENT_LIB_DIRECTORY + "xamarinios");
 
 		//generate nuspec
 		string content = System.IO.File.ReadAllText(NUGET_NAME + ".nuspec");

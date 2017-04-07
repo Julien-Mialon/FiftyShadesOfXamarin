@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UIKit;
 
-namespace FiftyShadesOf.iOS
+namespace Florent37.FiftyShadesOfXamarin
 {
 	public class FiftyShadesOf
 	{
@@ -29,6 +29,7 @@ namespace FiftyShadesOf.iOS
 			}
 			return this;
 		}
+
 		public FiftyShadesOf Except(params UIView[] views)
 		{
 			foreach (var view in views)
@@ -41,18 +42,33 @@ namespace FiftyShadesOf.iOS
 			return this;
 		}
 
-		public FiftyShadesOf FadeIn(bool fadeIn)
-		{
-			return this;
-		}
-
 		public FiftyShadesOf Start()
 		{
+			foreach (IFiftyShadeView view in _viewStates.Values)
+			{
+				view.Start();
+			}
+
 			return this;
 		}
 
 		public FiftyShadesOf Stop()
 		{
+			foreach (IFiftyShadeView view in _viewStates.Values)
+			{
+				view.Stop();
+			}
+
+			return this;
+		}
+
+		public FiftyShadesOf AutoLayout(bool enableAutoLayout)
+		{
+			foreach (IFiftyShadeView view in _viewStates.Values)
+			{
+				view.AutoLayout(enableAutoLayout);
+			}
+
 			return this;
 		}
 

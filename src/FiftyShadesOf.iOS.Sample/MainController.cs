@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CoreGraphics;
 using UIKit;
+using Florent37.FiftyShadesOfXamarin;
 
 namespace FiftyShadesOf.iOS.Sample
 {
@@ -25,7 +26,10 @@ namespace FiftyShadesOf.iOS.Sample
 			UITapGestureRecognizer tap = new UITapGestureRecognizer(recognizer =>
 			{
 				recognizer.Enabled = false;
-				FiftyShadesOf shade = FiftyShadesOf.With(this).On(View).Start();
+				var shade = Florent37.FiftyShadesOfXamarin.FiftyShadesOf.With(this)
+				                                   .On(View)
+				                                   .AutoLayout(false)
+				                                   .Start();
 
 				Task.Run(async () =>
 				{

@@ -2,16 +2,16 @@ using System;
 using CoreAnimation;
 using UIKit;
 
-namespace FiftyShadesOf.iOS
+namespace Florent37.FiftyShadesOfXamarin
 {
 	public abstract class DefaultFiftyShadeView<TView> : IFiftyShadeView where TView : UIView
 	{
 		private nfloat _previousAlpha;
-		private bool _fadeIn;
 
 		protected UIViewController Context { get; }
 		protected TView View { get; }
 		protected UIView Shade { get; private set; }
+		protected bool AutoLayoutEnabled { get; private set; }
 
 		protected UIColor NormalColor { get; set; } = ShadesColors.DefaultGray;
 
@@ -23,9 +23,8 @@ namespace FiftyShadesOf.iOS
 			View = view;
 		}
 
-		public virtual void Start(bool fadeIn)
+		public virtual void Start()
 		{
-			_fadeIn = fadeIn;
 			SaveState();
 			Shade = CreateShade();
 
@@ -44,6 +43,11 @@ namespace FiftyShadesOf.iOS
 			});
 		}
 
+		public void AutoLayout(bool enableAutoLayout)
+		{
+			AutoLayoutEnabled = enableAutoLayout;
+		}
+
 		protected virtual UIView CreateShade()
 		{
 			UIView shade = new UIView
@@ -51,13 +55,21 @@ namespace FiftyShadesOf.iOS
 				BackgroundColor = UIColor.Clear,
 			};
 			Context.View.Add(shade);
-			Context.View.AddConstraints(new[]
+
+			if (AutoLayoutEnabled)
 			{
-				NSLayoutConstraint.Create(shade, NSLayoutAttribute.Width, NSLayoutRelation.Equal, View, NSLayoutAttribute.Width, 1f, 0f),
-				NSLayoutConstraint.Create(shade, NSLayoutAttribute.Height, NSLayoutRelation.Equal, View, NSLayoutAttribute.Height, 1f, 0f),
-				NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterX, 1f, 0f),
-				NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterY, 1f, 0f),
-			});
+				Context.View.AddConstraints(new[]
+				{
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Width, NSLayoutRelation.Equal, View, NSLayoutAttribute.Width, 1f, 0f),
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Height, NSLayoutRelation.Equal, View, NSLayoutAttribute.Height, 1f, 0f),
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterX, 1f, 0f),
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterY, 1f, 0f),
+				});
+			}
+			else
+			{
+				shade.Frame = View.Frame;
+			}
 
 			return shade;
 		}

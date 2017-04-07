@@ -1,9 +1,11 @@
-namespace FiftyShadesOf.iOS
+namespace Florent37.FiftyShadesOfXamarin
 {
 	public interface IFiftyShadeView
 	{
-		void Start(bool fadeIn);
+		void Start();
 
 		void Stop();
+
+		void AutoLayout(bool enableAutoLayout);
 	}
 }

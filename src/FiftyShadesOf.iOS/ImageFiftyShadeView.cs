@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace FiftyShadesOf.iOS
+namespace Florent37.FiftyShadesOfXamarin
 {
 	public class ImageFiftyShadeView : DefaultFiftyShadeView<UIImageView>
 	{

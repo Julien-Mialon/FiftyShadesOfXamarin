@@ -6,15 +6,17 @@
 		<title>{id}</title>
 		<authors>{author}</authors>
 		<owners>{author}</owners>
-		<licenseUrl>https://github.com/Julien-Mialon/ExpectAnimXamarin/blob/master/LICENSE</licenseUrl>
-		<projectUrl>https://github.com/Julien-Mialon/ExpectAnimXamarin</projectUrl>
+		<licenseUrl>https://github.com/Julien-Mialon/FiftyShadesOfXamarin/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/Julien-Mialon/FiftyShadesOfXamarin</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>An elegant context-care loading placeholder for Android.</description>
+		<description>An elegant context-care loading placeholder for Xamarin Android &amp; Xamarin iOS.</description>
 		<releaseNotes>Initial release.</releaseNotes>
 		<copyright>Copyright 2017 Julien Mialon</copyright>
-		<tags>xamarin android loading loader context care placeholder</tags>
+		<tags>xamarin android ios loading loader context care placeholder</tags>
 		<dependencies>
-            <dependency id="Xamarin.Android.Support.v7.AppCompat" version="25.1.1" />
+			<group targetFramework="monoandroid">
+            	<dependency id="Xamarin.Android.Support.v7.AppCompat" version="25.1.1" />
+			</group>
 		</dependencies>
 	</metadata>
 </package>
