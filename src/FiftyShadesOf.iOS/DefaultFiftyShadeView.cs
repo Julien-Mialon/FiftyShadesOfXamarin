@@ -54,10 +54,10 @@ namespace Florent37.FiftyShadesOfXamarin
 			{
 				BackgroundColor = UIColor.Clear,
 			};
-			Context.View.Add(shade);
 
 			if (AutoLayoutEnabled)
 			{
+				Context.View.Add(shade);
 				Context.View.AddConstraints(new[]
 				{
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Width, NSLayoutRelation.Equal, View, NSLayoutAttribute.Width, 1f, 0f),
@@ -68,7 +68,17 @@ namespace Florent37.FiftyShadesOfXamarin
 			}
 			else
 			{
+				View.Superview.Add(shade);
+
 				shade.Frame = View.Frame;
+				Context.View.AddConstraints(new[]
+				{
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Width, NSLayoutRelation.Equal, 1f, View.Frame.Width),
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Height, NSLayoutRelation.Equal,  1f, View.Frame.Height),
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterX, 1f, 0f),
+					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterY, 1f, 0f),
+				});
+
 			}
 
 			return shade;
