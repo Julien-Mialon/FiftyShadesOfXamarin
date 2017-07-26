@@ -9,7 +9,7 @@ const string DEPLOYMENT_DIRECTORY = "../build";
 const string DEPLOYMENT_LIB_DIRECTORY = DEPLOYMENT_DIRECTORY + "/lib/";
 
 const string NUGET_NAME = "Florent37.FiftyShadesOfXamarin";
-const string NUGET_VERSION = "1.0.2";
+const string NUGET_VERSION = "1.0.3";
 const string NUGET_AUTHOR = "Julien Mialon";
 
 /* constants for target names */
