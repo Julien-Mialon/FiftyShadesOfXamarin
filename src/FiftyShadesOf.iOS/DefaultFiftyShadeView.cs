@@ -17,6 +17,8 @@ namespace Florent37.FiftyShadesOfXamarin
 
 		protected UIColor AnimatedColor { get; set; } = ShadesColors.DefaultGrayAnimated;
 
+		private NSLayoutConstraint[] _constraints;
+
 		protected DefaultFiftyShadeView(UIViewController context, TView view)
 		{
 			Context = context;
@@ -58,26 +60,26 @@ namespace Florent37.FiftyShadesOfXamarin
 			if (AutoLayoutEnabled)
 			{
 				Context.View.Add(shade);
-				Context.View.AddConstraints(new[]
-				{
+				_constraints = new[]{
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Width, NSLayoutRelation.Equal, View, NSLayoutAttribute.Width, 1f, 0f),
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Height, NSLayoutRelation.Equal, View, NSLayoutAttribute.Height, 1f, 0f),
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterX, 1f, 0f),
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterY, 1f, 0f),
-				});
+				};
+				Context.View.AddConstraints(_constraints);
 			}
 			else
 			{
 				View.Superview.Add(shade);
 
 				shade.Frame = View.Frame;
-				Context.View.AddConstraints(new[]
-				{
+				_constraints = new[]{
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Width, NSLayoutRelation.Equal, 1f, View.Frame.Width),
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.Height, NSLayoutRelation.Equal,  1f, View.Frame.Height),
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterX, 1f, 0f),
 					NSLayoutConstraint.Create(shade, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, View, NSLayoutAttribute.CenterY, 1f, 0f),
-				});
+				};
+				Context.View.AddConstraints(_constraints);
 
 			}
 
@@ -114,6 +116,7 @@ namespace Florent37.FiftyShadesOfXamarin
 		protected virtual void RestoreState()
 		{
 			View.Alpha = _previousAlpha;
+			Context.View.RemoveConstraints(_constraints);
 		}
 	}
 }
