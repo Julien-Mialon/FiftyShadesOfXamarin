@@ -1,5 +1,5 @@
 #addin "Cake.ExtendedNuGet"
-#addin "nuget:?package=NuGet.Core&version=2.12.0"
+#addin "nuget:?package=NuGet.Core&version=2.14.0"
 
 
 const string ROOT_PATH = "../src/";
