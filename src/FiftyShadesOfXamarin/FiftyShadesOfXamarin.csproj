@@ -11,10 +11,12 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>FiftyShadesOfXamarin</RootNamespace>
         <AssemblyName>FiftyShadesOfXamarin</AssemblyName>
-        <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+        <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
         <FileAlignment>512</FileAlignment>
         <AndroidClassParser>class-parse</AndroidClassParser>
         <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
+        <LangVersion>latest</LangVersion>
+        <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <DebugSymbols>true</DebugSymbols>
